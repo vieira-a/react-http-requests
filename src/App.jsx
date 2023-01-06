@@ -14,29 +14,22 @@ function App() {
    * HTTP method GET
    */
   useEffect(() => {
-   
     async function fetchData() {
-
       const response = await fetch(url);
-
       const data = await response.json();
-
       setDatabase(data)
-
     }
-    
     fetchData()
-
   }, [])
-
+   /**
+   * Basic submit data using async function
+   * HTTP method POST
+   */
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
     const person = {
       name,
     }
-
     const response = await fetch(url, {
       method: 'POST',
       headers: {
@@ -44,11 +37,11 @@ function App() {
       },
       body: JSON.stringify(person)
     });
-
-    console.log()
+    const personUpdated = await response.json();
+    //Update database to show itens on submit
+    setDatabase((prev) => [...prev, personUpdated])
+    setName('')
   }
-
-
   return (
 
     <div className="App">
@@ -65,10 +58,8 @@ function App() {
           <input type="text" name='name' value={name} onChange={(e) => setName(e.target.value)}/>
           <input type="submit"/>
         </form>
-            
       </div>
-    </div>
-    
+    </div>    
   )
 }
 

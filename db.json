@@ -41,12 +41,20 @@
       "name": "Saruman"
     },
     {
-      "name": "Saruman",
+      "name": "Radagast",
       "id": 11
     },
     {
-      "name": "Saruman",
+      "name": "Gollum",
       "id": 12
+    },
+    {
+      "name": "Pippin",
+      "id": 13
+    },
+    {
+      "name": "Nazgûl",
+      "id": 14
     }
   ]
 }
