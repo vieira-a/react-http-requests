@@ -1,18 +1,26 @@
 import './App.css'
 
 import { useState, useEffect } from 'react'
+import { useFetch } from './hooks/useFetch';
 
 function App() {
 
   const url = 'http://localhost:3000/persons'
+
+  /**
+   * Advanced Fetch data using custom hook
+   */
+  const { data: item } = useFetch(url);
   
-  const [database, setDatabase] = useState([]);
   const [name, setName] = useState('');
 
   /**
    * Basic fetch data using useEffect hook
    * HTTP method GET
    */
+  /*
+  const [database, setDatabase] = useState([]);
+  
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(url);
@@ -21,6 +29,8 @@ function App() {
     }
     fetchData()
   }, [])
+  */
+  
    /**
    * Basic submit data using async function
    * HTTP method POST
@@ -47,7 +57,7 @@ function App() {
     <div className="App">
       <div className="person-list">
         <ul>
-          {database.map((person)=>(
+          {item && item.map((person)=>(
             <li key={person.id}>{person.name}</li>
           ))}
         </ul>
