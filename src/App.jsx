@@ -61,17 +61,13 @@ function App() {
 
     <div className="App">
       <div className="person-list">
-
         {loading && <p>Carregando dados...</p>}
-
         {!loading && (
-
           <ul>
             {item && item.map((person)=>(
               <li key={person.id}>{person.name}</li>
             ))}
           </ul>
-
         )}
       </div>
       <div className="person-register">

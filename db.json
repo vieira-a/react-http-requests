@@ -69,11 +69,19 @@
       "id": 17
     },
     {
+<<<<<<< HEAD
       "name": "Baggins",
       "id": 18
     },
     {
       "name": "Goblin",
+=======
+      "name": "Baggins 2",
+      "id": 18
+    },
+    {
+      "name": "Baggins 2",
+>>>>>>> 2a71b7b251781aeefacf4f3af1379dbb42c5a199
       "id": 19
     }
   ]

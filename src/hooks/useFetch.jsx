@@ -21,6 +21,7 @@ export const useFetch = (url) => {
   }
   //GET
   useEffect(()=> {
+    setLoading(true);
     const fetchData = async () => {
       setLoading(true);
       const response = await fetch(url);
