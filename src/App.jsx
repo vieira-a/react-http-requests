@@ -10,7 +10,7 @@ function App() {
   /**
    * Advanced Fetch data using custom hook
    */
-  const { data: item } = useFetch(url);
+  const { data: item, httpConfig } = useFetch(url);
   
   const [name, setName] = useState('');
 
@@ -20,7 +20,7 @@ function App() {
    */
   /*
   const [database, setDatabase] = useState([]);
-  
+
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(url);
@@ -40,16 +40,21 @@ function App() {
     const person = {
       name,
     }
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(person)
-    });
-    const personUpdated = await response.json();
-    //Update database to show itens on submit
-    setDatabase((prev) => [...prev, personUpdated])
+    // const response = await fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(person)
+    // });
+    // const personUpdated = await response.json();
+    // //Update database to show itens on submit
+    // setDatabase((prev) => [...prev, personUpdated])
+    
+    /**
+     * POST with custom hook
+     */
+    httpConfig(person, "POST")
     setName('')
   }
   return (
