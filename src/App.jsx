@@ -10,46 +10,15 @@ function App() {
   /**
    * Advanced Fetch data using custom hook
    */
-  const { data: item, httpConfig, loading, error } = useFetch(url);
+  const { data: item, httpConfig, loading, error, handleDelete } = useFetch(url);
   
   const [name, setName] = useState('');
 
-  /**
-   * Basic fetch data using useEffect hook
-   * HTTP method GET
-   */
-  /*
-  const [database, setDatabase] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(url);
-      const data = await response.json();
-      setDatabase(data)
-    }
-    fetchData()
-  }, [])
-  */
-  
-   /**
-   * Basic submit data using async function
-   * HTTP method POST
-   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     const person = {
       name,
     }
-    // const response = await fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(person)
-    // });
-    // const personUpdated = await response.json();
-    // //Update database to show itens on submit
-    // setDatabase((prev) => [...prev, personUpdated])
     
     /**
      * POST with custom hook
@@ -57,6 +26,8 @@ function App() {
     httpConfig(person, "POST")
     setName('')
   }
+
+
   return (
 
     <div className="App">
@@ -64,9 +35,13 @@ function App() {
         {loading && <p>Carregando dados...</p>}
         {error && <p>{error}</p>}
         {!error && (
-          <ul>
+          <ul className='data-list'>
             {item && item.map((person)=>(
-              <li key={person.id}>{person.name}</li>
+              <div className='data-item' key={person.id}>
+                <li>{person.name}</li>
+                <button id={person.id} onClick={handleDelete}>Excluir</button>
+              </div>
+              
             ))}
           </ul>
         )}

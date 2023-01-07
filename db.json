@@ -1,88 +1,20 @@
 {
   "persons": [
     {
-      "id": 1,
-      "name": "Sauron"
-    },
-    {
-      "id": 2,
-      "name": "Galadriel"
-    },
-    {
-      "id": 3,
-      "name": "Gandalf"
-    },
-    {
-      "id": 4,
-      "name": "Aragorn"
-    },
-    {
-      "id": 5,
-      "name": "Isildur"
-    },
-    {
-      "id": 6,
-      "name": "Frodo"
-    },
-    {
-      "id": 7,
-      "name": "Elrond"
-    },
-    {
-      "id": 8,
-      "name": "Legolas"
-    },
-    {
-      "id": 9,
-      "name": "Bilbo"
-    },
-    {
-      "id": 10,
-      "name": "Saruman"
-    },
-    {
-      "name": "Radagast",
-      "id": 11
-    },
-    {
-      "name": "Gollum",
-      "id": 12
-    },
-    {
-      "name": "Pippin",
-      "id": 13
-    },
-    {
-      "name": "Nazgûl",
-      "id": 14
-    },
-    {
-      "name": "Oaskshield",
-      "id": 15
-    },
-    {
-      "name": "Baggins",
-      "id": 16
-    },
-    {
       "name": "Baggins",
       "id": 17
     },
     {
-<<<<<<< HEAD
       "name": "Baggins",
       "id": 18
     },
     {
       "name": "Goblin",
-=======
-      "name": "Baggins 2",
-      "id": 18
+      "id": 19
     },
     {
-      "name": "Baggins 2",
->>>>>>> 2a71b7b251781aeefacf4f3af1379dbb42c5a199
-      "id": 19
+      "name": "Pedro",
+      "id": 20
     }
   ]
 }

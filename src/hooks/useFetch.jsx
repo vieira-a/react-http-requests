@@ -18,7 +18,7 @@ export const useFetch = (url) => {
         body: JSON.stringify(data)
       })
       setMethod(method)
-    }
+    } 
   }
   //GET
   useEffect(()=> {
@@ -38,6 +38,7 @@ export const useFetch = (url) => {
     }
     fetchData();
   }, [url, callFetch]) 
+
   //POST
   useEffect(() => {
     const httpRequest = async () => {
@@ -51,7 +52,16 @@ export const useFetch = (url) => {
     }
     httpRequest()
   }, [config, method, url])
+
   
-  return {data, httpConfig, loading, error}
+  const handleDelete = async (e) => {
+    let id = e.target.id
+    let NEW_URL = `${url}/${id}`
+    const response = await fetch(NEW_URL, { method: 'DELETE'})
+    const json = await response.json()
+    setCallFetch(json)
+  }
+  
+  return {data, httpConfig, loading, error, handleDelete}
 
 }
