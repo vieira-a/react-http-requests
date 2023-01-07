@@ -65,7 +65,7 @@ function App() {
         {!loading && (
           <ul>
             {item && item.map((person)=>(
-              <li key={person.id}>{person.name}</li>
+              <li key={person.id}>{person.nameg}</li>
             ))}
           </ul>
         )}
