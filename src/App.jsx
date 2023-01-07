@@ -10,7 +10,7 @@ function App() {
   /**
    * Advanced Fetch data using custom hook
    */
-  const { data: item, httpConfig } = useFetch(url);
+  const { data: item, httpConfig, loading } = useFetch(url);
   
   const [name, setName] = useState('');
 
@@ -61,17 +61,27 @@ function App() {
 
     <div className="App">
       <div className="person-list">
-        <ul>
-          {item && item.map((person)=>(
-            <li key={person.id}>{person.name}</li>
-          ))}
-        </ul>
+
+        {loading && <p>Carregando dados...</p>}
+
+        {!loading && (
+
+          <ul>
+            {item && item.map((person)=>(
+              <li key={person.id}>{person.name}</li>
+            ))}
+          </ul>
+
+        )}
       </div>
       <div className="person-register">
         <form onSubmit={handleSubmit} >
           <label>Name</label>
           <input type="text" name='name' value={name} onChange={(e) => setName(e.target.value)}/>
-          <input type="submit"/>
+          
+          {loading && <input disabled type="submit" value="Aguarde"/>}
+          {!loading && <input type="submit"/>}
+          
         </form>
       </div>
     </div>    
