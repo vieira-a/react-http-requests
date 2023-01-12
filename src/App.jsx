@@ -10,9 +10,13 @@ function App() {
   /**
    * Advanced Fetch data using custom hook
    */
-  const { data: item, httpConfig, loading, error, handleDelete } = useFetch(url);
+  const { data: item, httpConfig, loading, error, handleDelete, handleEdit } = useFetch(url);
   
   const [name, setName] = useState('');
+
+  const handleRemove = (id) => {
+    httpConfig(id, "DELETE")
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +43,8 @@ function App() {
             {item && item.map((person)=>(
               <div className='data-item' key={person.id}>
                 <li>{person.name}</li>
-                <button id={person.id} onClick={handleDelete}>Excluir</button>
+                <button id={person.id} onClick={handleEdit}>Editar</button>
+                <button onClick={() => handleRemove(person.id)}>Excluir</button>
               </div>
               
             ))}

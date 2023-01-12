@@ -7,6 +7,7 @@ export const useFetch = (url) => {
   const [callFetch, setCallFetch] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [itemId, setItemId] = useState(null);
 
   const httpConfig = (data, method) => {
     if(method === "POST"){
@@ -18,7 +19,16 @@ export const useFetch = (url) => {
         body: JSON.stringify(data)
       })
       setMethod(method)
-    } 
+    } else if(method === "DELETE") {
+      setConfig({
+        method,
+        headers: {
+          "Content-type": "application/json",
+        }
+      })
+      setItemId(data)
+      setMethod(method)
+    }
   }
   //GET
   useEffect(()=> {
@@ -48,12 +58,20 @@ export const useFetch = (url) => {
         const response = await fetch(...fetchOptions)
         const json = await response.json()
         setCallFetch(json)
+        
+      } else if(method === "DELETE") {
+        const urlDelete = `${url}/${itemId}`
+        const response = await fetch(urlDelete, config)
+        const json = await response.json()
+        setCallFetch(json)
       }
     }
     httpRequest()
   }, [config, method, url])
 
-  
+  /**
+   * My own solution
+   *  
   const handleDelete = async (e) => {
     let id = e.target.id
     let NEW_URL = `${url}/${id}`
@@ -61,7 +79,8 @@ export const useFetch = (url) => {
     const json = await response.json()
     setCallFetch(json)
   }
+  */
   
-  return {data, httpConfig, loading, error, handleDelete}
+  return {data, httpConfig, loading, error, handleDelete, handleEdit}
 
 }
