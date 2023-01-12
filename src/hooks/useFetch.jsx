@@ -58,7 +58,7 @@ export const useFetch = (url) => {
         const response = await fetch(...fetchOptions)
         const json = await response.json()
         setCallFetch(json)
-        
+
       } else if(method === "DELETE") {
         const urlDelete = `${url}/${itemId}`
         const response = await fetch(urlDelete, config)
@@ -81,6 +81,6 @@ export const useFetch = (url) => {
   }
   */
   
-  return {data, httpConfig, loading, error, handleDelete, handleEdit}
+  return {data, httpConfig, loading, error}
 
 }
